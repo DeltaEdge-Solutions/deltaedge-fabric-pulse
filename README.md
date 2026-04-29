@@ -19,7 +19,7 @@ No agent. No cloud. No data leaving your environment.
 
 ## Sample Report
 
-👉 [View Live Sample Report](https://deltaedge-solutions.github.io/deltaedge-fabric-pulse/sample-report.html)
+👉 [View Live Sample Report](https://deltaedge-solutions.github.io/deltaedge-fabric-pulse/FabricPulse_Sample-report.html)
 
 See exactly what Fabric Pulse generates before downloading.
 
