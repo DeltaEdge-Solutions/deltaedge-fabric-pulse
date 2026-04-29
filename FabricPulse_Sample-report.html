@@ -1,0 +1,2028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fabric Pulse — 10.10.10.101 — DeltaEdge Solutions</title>
+  <script src="https://cdn.jsdelivr.net/npm/react@17/umd/react.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@17/umd/react-dom.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.23.3/babel.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --sidebar-bg: #0F1117;
+      --header-bg: #0F1117;
+      --main-bg: #F4F6FA;
+      --card-bg: #FFFFFF;
+      --border: #E5E7EB;
+      --sidebar-border: #1E2433;
+      --primary: #0066CC;
+      --primary-light: #EBF4FF;
+      --accent: #059669;
+      --text: #1A1D2E;
+      --text-secondary: #6B7280;
+      --text-sidebar: #9CA3AF;
+      --text-sidebar-active: #FFFFFF;
+      --critical: #DC2626;
+      --critical-bg: #FEF2F2;
+      --major: #EA580C;
+      --major-bg: #FFF7ED;
+      --minor: #CA8A04;
+      --minor-bg: #FEFCE8;
+      --warning: #0284C7;
+      --warning-bg: #EFF6FF;
+      --success: #059669;
+      --success-bg: #ECFDF5;
+      --sidebar-width: 240px;
+      --header-height: 60px;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--main-bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+    #root { display: flex; flex-direction: column; min-height: 100vh; }
+    * { scrollbar-width: thin; scrollbar-color: #E5E7EB #F4F6FA; }
+    *::-webkit-scrollbar { width: 6px; }
+    *::-webkit-scrollbar-track { background: #F4F6FA; }
+    *::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 3px; }
+
+    @media print {
+      .no-print { display: none !important; }
+      #sidebar { display: none !important; }
+      #header { display: none !important; }
+      #main-content {
+        margin-left: 0 !important;
+        margin-top: 0 !important;
+        padding: 20px !important;
+      }
+      .print-section {
+        display: block !important;
+        page-break-before: auto;
+        margin-bottom: 32px;
+      }
+      .print-header {
+        display: flex !important;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 0;
+        border-bottom: 2px solid #0066CC;
+        margin-bottom: 24px;
+      }
+      body { background: white; }
+      .card { box-shadow: none !important; border: 1px solid #E5E7EB !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    window.FABRIC_PULSE_DATA = {
+  "meta": {
+    "tool": "Fabric Pulse",
+    "version": "1.1",
+    "by": "DeltaEdge Solutions",
+    "website": "https://deltaedge-solutions.com",
+    "contact": "himanshu@deltaedge-solutions.com",
+    "contactUrl": "https://deltaedge-solutions.com/contact",
+    "clarityUrl": "https://clarity.fm/himanshu-handa",
+    "generatedAt": "2026-04-29T09:58:55.220776",
+    "apicHost": "10.10.10.101",
+    "consultantName": ""
+  },
+  "apic": {
+    "version": "6.1(4h)",
+    "buildTime": "Fri Aug 08 21:57:42 PDT 2025",
+    "node": "topology/pod-1/node-1"
+  },
+  "health": {
+    "current": 89,
+    "previous": 62,
+    "change": 27,
+    "maxSeverity": "info",
+    "criticalImpact": 0,
+    "majorImpact": 0,
+    "minorImpact": 0,
+    "warnImpact": 0
+  },
+  "nodes": [
+    {
+      "id": "102",
+      "name": "leaf-102",
+      "role": "leaf",
+      "model": "N9K-C9396PX",
+      "address": "10.0.208.67",
+      "fabricSt": "active",
+      "version": "simsw-6.1(4h)",
+      "serial": "TEP-1-102",
+      "dn": "topology/pod-1/node-102",
+      "lastStateModTs": "2025-07-20T20:37:25.690+00:00"
+    },
+    {
+      "id": "101",
+      "name": "leaf-101",
+      "role": "leaf",
+      "model": "N9K-C9396PX",
+      "address": "10.0.208.64",
+      "fabricSt": "active",
+      "version": "simsw-6.1(4h)",
+      "serial": "TEP-1-101",
+      "dn": "topology/pod-1/node-101",
+      "lastStateModTs": "2025-07-20T20:42:21.275+00:00"
+    },
+    {
+      "id": "104",
+      "name": "Spine-104",
+      "role": "spine",
+      "model": "N9K-C9508",
+      "address": "10.0.208.66",
+      "fabricSt": "active",
+      "version": "simsw-6.1(4h)",
+      "serial": "TEP-1-104",
+      "dn": "topology/pod-1/node-104",
+      "lastStateModTs": "2025-07-20T20:35:54.987+00:00"
+    },
+    {
+      "id": "103",
+      "name": "Spine-103",
+      "role": "spine",
+      "model": "N9K-C9508",
+      "address": "10.0.208.65",
+      "fabricSt": "active",
+      "version": "simsw-6.1(4h)",
+      "serial": "TEP-1-103",
+      "dn": "topology/pod-1/node-103",
+      "lastStateModTs": "2025-07-20T20:34:47.144+00:00"
+    },
+    {
+      "id": "1",
+      "name": "apic1",
+      "role": "controller",
+      "model": "",
+      "address": "10.0.0.1",
+      "fabricSt": "commissioned",
+      "version": "6.1(4h)",
+      "serial": "TEP-1-1",
+      "dn": "topology/pod-1/node-1",
+      "lastStateModTs": "2025-07-20T20:28:01.638+00:00"
+    }
+  ],
+  "faults": [
+    {
+      "code": "F0104",
+      "severity": "critical",
+      "cause": "port-down",
+      "descr": "This fault occurs when a bond interface on a controller is in the link-down state.",
+      "count": 1,
+      "nonAcked": 1,
+      "domain": "infra",
+      "type": "operational",
+      "rule": "cnw-aggr-if-down",
+      "dn": "fltcode-F0104",
+      "operationalImpact": "APIC cluster redundancy is degraded. A bond interface linking the APIC to the fabric is down. If another APIC fails simultaneously, fabric management may become unavailable, blocking policy changes, tenant provisioning, and configuration pushes.",
+      "urgency": "High"
+    },
+    {
+      "code": "F4674",
+      "severity": "critical",
+      "cause": "encryption-disabled",
+      "descr": "This fault occurs when the Strong encryption is not enabled on pkiExportEncryption policy.",
+      "count": 1,
+      "nonAcked": 1,
+      "domain": "security",
+      "type": "operational",
+      "rule": "pki-export-encryption-key-encryption-disabled",
+      "dn": "fltcode-F4674",
+      "operationalImpact": "Strong encryption is not enabled for policy export. Exported configurations and snapshots are stored without encryption, creating a security risk if backup files are accessed by unauthorised parties.",
+      "urgency": "High"
+    },
+    {
+      "code": "F1318",
+      "severity": "major",
+      "cause": "equipment-psu-missing",
+      "descr": "This fault occurs when PSU are not detected correctly",
+      "count": 2,
+      "nonAcked": 2,
+      "domain": "infra",
+      "type": "environmental",
+      "rule": "eqpt-psg-pzero-pwr",
+      "dn": "fltcode-F1318",
+      "operationalImpact": "One or more power supply units are missing or not detected. The affected node is running without full power redundancy. A single PSU failure will cause the node to go offline, potentially dropping all traffic through that switch.",
+      "urgency": "High"
+    },
+    {
+      "code": "F0103",
+      "severity": "major",
+      "cause": "port-down",
+      "descr": "This fault occurs when a physical interface on a controller is in the link-down state.",
+      "count": 1,
+      "nonAcked": 1,
+      "domain": "infra",
+      "type": "operational",
+      "rule": "cnw-phys-if-down",
+      "dn": "fltcode-F0103",
+      "operationalImpact": "A physical interface on the APIC controller is link-down. This reduces APIC connectivity redundancy. Fabric management continuity depends on remaining active interfaces.",
+      "urgency": "High"
+    },
+    {
+      "code": "F381328",
+      "severity": "warning",
+      "cause": "threshold-crossed",
+      "descr": "Threshold crossing alert for class eqptIngrErrPkts5min, property crcLast",
+      "count": 16,
+      "nonAcked": 16,
+      "domain": "infra",
+      "type": "operational",
+      "rule": "tca-eqpt-ingr-err-pkts5min-crc-last",
+      "dn": "fltcode-F381328",
+      "operationalImpact": "CRC errors detected on ingress interfaces over the last 5 minutes. CRC errors indicate physical layer issues \u2014 faulty cables, transceivers, or SFPs. Affected traffic is being silently dropped at the hardware level, causing application retransmissions and degraded throughput.",
+      "urgency": "High"
+    },
+    {
+      "code": "F3057",
+      "severity": "warning",
+      "cause": "network-settings-not-configured",
+      "descr": "This fault is raised when APIC smart licensing network settings are not configured and APIC cannot report license usage to Cisco Smart Software Manager (CSSM).",
+      "count": 1,
+      "nonAcked": 1,
+      "domain": "external",
+      "type": "config",
+      "rule": "license-manager-product-not-registered",
+      "dn": "fltcode-F3057",
+      "operationalImpact": "Smart Licensing network settings are not configured. The APIC cannot report license usage to Cisco CSSM. While this does not immediately impact traffic, unresolved licensing violations may eventually restrict fabric features.",
+      "urgency": "Low"
+    },
+    {
+      "code": "F1207",
+      "severity": "warning",
+      "cause": "protocol-arp-adjacency-down",
+      "descr": "This fault occurs when the operational state of the arp adjacency is down",
+      "count": 1,
+      "nonAcked": 1,
+      "domain": "access",
+      "type": "operational",
+      "rule": "arp-st-adj-ep-oper-st-down",
+      "dn": "fltcode-F1207",
+      "operationalImpact": "An ARP adjacency is operationally down. ARP resolution for endpoints in the affected EPG or BD may fail, preventing new flows from being established even if the physical path is available.",
+      "urgency": "High"
+    },
+    {
+      "code": "F100696",
+      "severity": "warning",
+      "cause": "threshold-crossed",
+      "descr": "Threshold crossing alert for class eqptIngrDropPkts5min, property forwardingRate",
+      "count": 18,
+      "nonAcked": 18,
+      "domain": "infra",
+      "type": "operational",
+      "rule": "tca-eqpt-ingr-drop-pkts5min-forwarding-rate",
+      "dn": "fltcode-F100696",
+      "operationalImpact": "Ingress packet drops due to forwarding failures. Packets are arriving but cannot be forwarded \u2014 possibly due to missing route or endpoint table entries, VXLAN encapsulation issues, or policy mismatches.",
+      "urgency": "High"
+    },
+    {
+      "code": "F1360",
+      "severity": "warning",
+      "cause": "protocol-coop-adjacency-down",
+      "descr": "This fault occurs when the operational state of the coop adjacency is down",
+      "count": 6,
+      "nonAcked": 6,
+      "domain": "access",
+      "type": "operational",
+      "rule": "coop-adj-ep-coop-adj-ep-down",
+      "dn": "fltcode-F1360",
+      "operationalImpact": "One or more COOP adjacencies are down. COOP is responsible for distributing endpoint location information across the fabric. Downed adjacencies mean some leaf nodes may not have accurate endpoint tables, causing traffic black-holing or flooding.",
+      "urgency": "High"
+    },
+    {
+      "code": "F100264",
+      "severity": "warning",
+      "cause": "threshold-crossed",
+      "descr": "Threshold crossing alert for class eqptIngrDropPkts5min, property bufferRate",
+      "count": 18,
+      "nonAcked": 18,
+      "domain": "infra",
+      "type": "operational",
+      "rule": "tca-eqpt-ingr-drop-pkts5min-buffer-rate",
+      "dn": "fltcode-F100264",
+      "operationalImpact": "Ingress packet drops due to buffer exhaustion. Incoming traffic is being dropped before it can be processed. This typically indicates the switch is receiving more traffic than it can handle, or there is a forwarding bottleneck downstream.",
+      "urgency": "Medium"
+    },
+    {
+      "code": "F0546",
+      "severity": "warning",
+      "cause": "interface-physical-down",
+      "descr": "This fault occurs when a port goes down",
+      "count": 888,
+      "nonAcked": 888,
+      "domain": "access",
+      "type": "communications",
+      "rule": "ethpm-if-port-down-no-infra",
+      "dn": "fltcode-F0546",
+      "operationalImpact": "One or more access ports are down with no infrastructure policy applied. Endpoints connected to these ports cannot communicate. In a simulator environment this is expected for unconnected ports, but in production this indicates unreachable workloads.",
+      "urgency": "Medium"
+    },
+    {
+      "code": "F100480",
+      "severity": "warning",
+      "cause": "threshold-crossed",
+      "descr": "Threshold crossing alert for class eqptIngrDropPkts5min, property errorRate",
+      "count": 18,
+      "nonAcked": 18,
+      "domain": "infra",
+      "type": "operational",
+      "rule": "tca-eqpt-ingr-drop-pkts5min-error-rate",
+      "dn": "fltcode-F100480",
+      "operationalImpact": "Ingress packet drops due to errors on fabric interfaces. Traffic arriving at the switch is being discarded due to errors, potentially caused by physical layer issues or misconfigured interfaces upstream.",
+      "urgency": "Medium"
+    },
+    {
+      "code": "F110176",
+      "severity": "warning",
+      "cause": "threshold-crossed",
+      "descr": "Threshold crossing alert for class l2IngrBytes5min, property dropRate",
+      "count": 1,
+      "nonAcked": 1,
+      "domain": "infra",
+      "type": "operational",
+      "rule": "tca-l2-ingr-bytes5min-drop-rate",
+      "dn": "fltcode-F110176",
+      "operationalImpact": "L2 ingress byte drop rate threshold crossed. Layer 2 traffic is being dropped at ingress, indicating possible broadcast storms, STP issues, or unknown unicast flooding overwhelming the switch.",
+      "urgency": "Medium"
+    },
+    {
+      "code": "F96760",
+      "severity": "warning",
+      "cause": "threshold-crossed",
+      "descr": "Threshold crossing alert for class eqptEgrDropPkts5min, property bufferRate",
+      "count": 18,
+      "nonAcked": 18,
+      "domain": "infra",
+      "type": "operational",
+      "rule": "tca-eqpt-egr-drop-pkts5min-buffer-rate",
+      "dn": "fltcode-F96760",
+      "operationalImpact": "Egress packet drops due to buffer exhaustion detected. The switch output buffers are filling up, indicating congestion on egress interfaces. Bursty traffic or misconfigured QoS may be the cause. Applications will experience packet loss and retransmissions.",
+      "urgency": "Medium"
+    },
+    {
+      "code": "F96976",
+      "severity": "warning",
+      "cause": "threshold-crossed",
+      "descr": "Threshold crossing alert for class eqptEgrDropPkts5min, property errorRate",
+      "count": 18,
+      "nonAcked": 18,
+      "domain": "infra",
+      "type": "operational",
+      "rule": "tca-eqpt-egr-drop-pkts5min-error-rate",
+      "dn": "fltcode-F96976",
+      "operationalImpact": "Egress packet drops due to errors detected on fabric interfaces. Traffic is being dropped before leaving the switch. Applications may experience increased latency, retransmissions, and throughput degradation.",
+      "urgency": "Medium"
+    }
+  ],
+  "severityCounts": {
+    "critical": 2,
+    "major": 3,
+    "minor": 0,
+    "warning": 1003
+  },
+  "tenants": [
+    {
+      "name": "common",
+      "dn": "uni/tn-common",
+      "descr": "",
+      "nameAlias": "",
+      "modTs": "2025-07-20T20:27:16.530+00:00"
+    },
+    {
+      "name": "mgmt",
+      "dn": "uni/tn-mgmt",
+      "descr": "",
+      "nameAlias": "",
+      "modTs": "2025-07-20T20:27:19.314+00:00"
+    },
+    {
+      "name": "infra",
+      "dn": "uni/tn-infra",
+      "descr": "",
+      "nameAlias": "",
+      "modTs": "2025-07-20T20:27:19.434+00:00"
+    },
+    {
+      "name": "DeltaEdge-Corp",
+      "dn": "uni/tn-DeltaEdge-Corp",
+      "descr": "DeltaEdge Corporation primary tenant",
+      "nameAlias": "DECorp-Prod",
+      "modTs": "2025-07-21T05:44:29.591+00:00"
+    },
+    {
+      "name": "Shared-Services",
+      "dn": "uni/tn-Shared-Services",
+      "descr": "Shared infrastructure services tenant",
+      "nameAlias": "SharedSvc",
+      "modTs": "2025-07-21T05:44:29.578+00:00"
+    }
+  ],
+  "epgs": [
+    {
+      "name": "ave-ctrl",
+      "dn": "uni/tn-infra/ap-ave-ctrl/epg-ave-ctrl",
+      "descr": "",
+      "pcEnfPref": "unenforced",
+      "configSt": "applied",
+      "shutdown": "no",
+      "modTs": "2025-07-20T20:27:55.884+00:00"
+    },
+    {
+      "name": "default",
+      "dn": "uni/tn-infra/ap-access/epg-default",
+      "descr": "",
+      "pcEnfPref": "unenforced",
+      "configSt": "applied",
+      "shutdown": "no",
+      "modTs": "2025-07-20T20:27:55.638+00:00"
+    },
+    {
+      "name": "mgmt-epg",
+      "dn": "uni/tn-DeltaEdge-Corp/ap-AP1/epg-mgmt-epg",
+      "descr": "Management access EPG",
+      "pcEnfPref": "unenforced",
+      "configSt": "applied",
+      "shutdown": "no",
+      "modTs": "2025-07-21T05:44:29.591+00:00"
+    },
+    {
+      "name": "db-tier",
+      "dn": "uni/tn-DeltaEdge-Corp/ap-3tier-webapp/epg-db-tier",
+      "descr": "",
+      "pcEnfPref": "enforced",
+      "configSt": "applied",
+      "shutdown": "no",
+      "modTs": "2025-07-21T05:44:29.591+00:00"
+    },
+    {
+      "name": "EPG1",
+      "dn": "uni/tn-DeltaEdge-Corp/ap-AP1/epg-EPG1",
+      "descr": "",
+      "pcEnfPref": "unenforced",
+      "configSt": "applied",
+      "shutdown": "no",
+      "modTs": "2025-07-21T05:44:29.591+00:00"
+    },
+    {
+      "name": "web-tier",
+      "dn": "uni/tn-DeltaEdge-Corp/ap-3tier-webapp/epg-web-tier",
+      "descr": "Web frontend EPG",
+      "pcEnfPref": "enforced",
+      "configSt": "applied",
+      "shutdown": "no",
+      "modTs": "2025-07-21T05:44:29.591+00:00"
+    },
+    {
+      "name": "app-tier",
+      "dn": "uni/tn-DeltaEdge-Corp/ap-3tier-webapp/epg-app-tier",
+      "descr": "Application logic EPG",
+      "pcEnfPref": "enforced",
+      "configSt": "applied",
+      "shutdown": "no",
+      "modTs": "2025-07-21T05:44:29.591+00:00"
+    },
+    {
+      "name": "dns-ntp",
+      "dn": "uni/tn-Shared-Services/ap-infra-services/epg-dns-ntp",
+      "descr": "DNS and NTP servers EPG",
+      "pcEnfPref": "enforced",
+      "configSt": "applied",
+      "shutdown": "no",
+      "modTs": "2025-07-21T05:44:29.578+00:00"
+    },
+    {
+      "name": "monitoring",
+      "dn": "uni/tn-Shared-Services/ap-infra-services/epg-monitoring",
+      "descr": "",
+      "pcEnfPref": "unenforced",
+      "configSt": "applied",
+      "shutdown": "no",
+      "modTs": "2025-07-21T05:44:29.578+00:00"
+    }
+  ],
+  "policies": {
+    "snmp": {
+      "configured": true,
+      "adminSt": "enabled",
+      "name": "default",
+      "contact": "netops@deltaedge-corp.com",
+      "loc": "DC1-Pod1"
+    },
+    "syslog": {
+      "configured": false,
+      "destinations": []
+    },
+    "bgpRR": {
+      "configured": true,
+      "nodes": [
+        {
+          "id": "104",
+          "dn": "uni/fabric/bgpInstP-default/rr/node-104"
+        },
+        {
+          "id": "103",
+          "dn": "uni/fabric/bgpInstP-default/rr/node-103"
+        }
+      ]
+    }
+  },
+  "accessPolicies": {
+    "vlanPools": [
+      {
+        "name": "prod-vlan-pool",
+        "dn": "uni/infra/vlanns-[prod-vlan-pool]-static",
+        "allocMode": "static",
+        "descr": "Production VLAN pool"
+      },
+      {
+        "name": "vlan-pool-1",
+        "dn": "uni/infra/vlanns-[vlan-pool-1]-dynamic",
+        "allocMode": "dynamic",
+        "descr": ""
+      }
+    ],
+    "physDomains": [
+      {
+        "name": "phys",
+        "dn": "uni/phys-phys",
+        "descr": ""
+      },
+      {
+        "name": "PhysDom1",
+        "dn": "uni/phys-PhysDom1",
+        "descr": ""
+      },
+      {
+        "name": "prod-phys-domain",
+        "dn": "uni/phys-prod-phys-domain",
+        "descr": ""
+      }
+    ],
+    "aeps": [
+      {
+        "name": "default",
+        "dn": "uni/infra/attentp-default",
+        "descr": ""
+      },
+      {
+        "name": "prod-aep",
+        "dn": "uni/infra/attentp-prod-aep",
+        "descr": "AEP for production server ports"
+      },
+      {
+        "name": "AEP1",
+        "dn": "uni/infra/attentp-AEP1",
+        "descr": ""
+      }
+    ],
+    "interfacePolicyGroups": []
+  },
+  "readiness": {
+    "overallScore": 59,
+    "level": {
+      "label": "Partially Ready",
+      "color": "#D97706",
+      "description": "Key gaps remain \u2014 structured remediation recommended"
+    },
+    "criteria": {
+      "programmability": {
+        "score": 100,
+        "findings": [
+          "APIC version 6.1(4h) supports full REST API access",
+          "All 4 fabric nodes are active and under APIC control"
+        ],
+        "recommendations": [],
+        "effort": "Low"
+      },
+      "naming_convention": {
+        "score": 68,
+        "findings": [
+          "Leaf node naming is consistent \u2014 all using 'leaf' prefix",
+          "Spine node naming is consistent \u2014 all using 'spine' prefix",
+          "All 2 user tenants have descriptive names",
+          "\u26a0 Mixed case detected in node naming: Uppercase start: Spine-104, Spine-103 | Lowercase start: leaf-102, leaf-101",
+          "  Impact: Automation tools and scripts matching node names by pattern (e.g. 'spine-*') will miss nodes named with capital letters (e.g. 'Spine-103'). This causes silent failures in playbooks and API queries.",
+          "\u26a0 Default or non-descriptive EPG names detected: Non-descriptive EPGs: EPG1",
+          "  Impact: EPG names are used by automation tools to map application tiers to network policy. Generic names like 'EPG1' make it impossible to automate policy changes by application context."
+        ],
+        "recommendations": [
+          "Standardise all object names \u2014 use lowercase, role-based prefixes (spine-101, leaf-101) and descriptive application names for tenants and EPGs",
+          "Document the naming convention in a standards document and enforce it via APIC policies or automation pre-checks before any new object creation"
+        ],
+        "effort": "Medium"
+      },
+      "source_of_truth": {
+        "score": 59,
+        "findings": [
+          "2 of 5 tenants have descriptions",
+          "4 of 9 EPGs have descriptions",
+          "All nodes have custom names assigned"
+        ],
+        "recommendations": [],
+        "effort": "Medium"
+      },
+      "telemetry": {
+        "score": 25,
+        "findings": [
+          "No syslog remote destinations configured",
+          "SNMP policy is enabled",
+          "Streaming telemetry (gNMI/gRPC) configuration not detected \u2014 required for AI-driven operations"
+        ],
+        "recommendations": [
+          "Telemetry is a critical gap \u2014 automation tools and AI agents cannot operate reliably without real-time structured network data",
+          "Configure syslog to forward events to a centralised log management system",
+          "Deploy Nexus Dashboard Insights (NDI) or configure gNMI streaming telemetry to enable real-time structured data for automation platforms"
+        ],
+        "effort": "Medium"
+      },
+      "fault_hygiene": {
+        "score": 10,
+        "findings": [
+          "2 critical fault(s) require immediate attention",
+          "3 major fault(s) identified",
+          "1008 faults are unacknowledged \u2014 no evidence of active fault management",
+          "Total fault instances: 1008",
+          "Score deductions: -40 pts: 2 critical fault(s) present | -30 pts: 3 major fault(s) present | -20 pts: 1008 unacknowledged faults"
+        ],
+        "recommendations": [
+          "Resolve all critical faults before proceeding with any automation implementation",
+          "Investigate and resolve major faults \u2014 these indicate configuration or connectivity issues",
+          "Acknowledge all reviewed faults to demonstrate active fault management hygiene"
+        ],
+        "effort": "Medium"
+      },
+      "policy_consistency": {
+        "score": 57,
+        "findings": [
+          "4 of 7 EPGs using enforced policy mode"
+        ],
+        "recommendations": [
+          "Move EPGs to enforced mode and implement explicit contracts \u2014 required for micro-segmentation and automation-safe policy design"
+        ],
+        "effort": "Medium"
+      },
+      "firmware_currency": {
+        "score": 90,
+        "findings": [
+          "All fabric nodes running consistent firmware: simsw-6.1(4h)",
+          "Simulator firmware detected \u2014 version currency N/A"
+        ],
+        "recommendations": [],
+        "effort": "Low"
+      }
+    },
+    "remediationPlan": [
+      {
+        "criterion": "source_of_truth",
+        "score": 59,
+        "priority": 1,
+        "recommendations": [],
+        "effort": "Medium",
+        "service": "Automation Stack Implementation"
+      },
+      {
+        "criterion": "telemetry",
+        "score": 25,
+        "priority": 2,
+        "recommendations": [
+          "Telemetry is a critical gap \u2014 automation tools and AI agents cannot operate reliably without real-time structured network data",
+          "Configure syslog to forward events to a centralised log management system",
+          "Deploy Nexus Dashboard Insights (NDI) or configure gNMI streaming telemetry to enable real-time structured data for automation platforms"
+        ],
+        "effort": "Medium",
+        "service": "Automation Stack Implementation"
+      },
+      {
+        "criterion": "fault_hygiene",
+        "score": 10,
+        "priority": 3,
+        "recommendations": [
+          "Resolve all critical faults before proceeding with any automation implementation",
+          "Investigate and resolve major faults \u2014 these indicate configuration or connectivity issues",
+          "Acknowledge all reviewed faults to demonstrate active fault management hygiene"
+        ],
+        "effort": "Medium",
+        "service": "Post-Deployment Stabilisation Retainer"
+      },
+      {
+        "criterion": "policy_consistency",
+        "score": 57,
+        "priority": 4,
+        "recommendations": [
+          "Move EPGs to enforced mode and implement explicit contracts \u2014 required for micro-segmentation and automation-safe policy design"
+        ],
+        "effort": "Medium",
+        "service": "Greenfield ACI Fabric Design"
+      },
+      {
+        "criterion": "naming_convention",
+        "score": 68,
+        "priority": 5,
+        "recommendations": [
+          "Standardise all object names \u2014 use lowercase, role-based prefixes (spine-101, leaf-101) and descriptive application names for tenants and EPGs",
+          "Document the naming convention in a standards document and enforce it via APIC policies or automation pre-checks before any new object creation"
+        ],
+        "effort": "Medium",
+        "service": "Brownfield Network Modernisation"
+      }
+    ]
+  }
+};
+  </script>
+  <script type="text/babel">
+    const { useState, useEffect, useRef } = React;
+    const data = window.FABRIC_PULSE_DATA;
+
+    const fmt = (n) => Number(n).toLocaleString();
+
+    const severityColor = (s) => ({
+      critical: '#DC2626',
+      major: '#EA580C',
+      minor: '#CA8A04',
+      warning: '#0284C7',
+      info: '#6B7280'
+    }[s] || '#6B7280');
+
+    const severityBg = (s) => ({
+      critical: '#FEF2F2',
+      major: '#FFF7ED',
+      minor: '#FEFCE8',
+      warning: '#EFF6FF',
+      info: '#F9FAFB'
+    }[s] || '#F9FAFB');
+
+    const scoreColor = (s) => {
+      if (s >= 86) return '#059669';
+      if (s >= 71) return '#0284C7';
+      if (s >= 51) return '#D97706';
+      if (s >= 31) return '#EA580C';
+      return '#DC2626';
+    };
+
+    const scoreBg = (s) => {
+      if (s >= 86) return '#ECFDF5';
+      if (s >= 71) return '#EFF6FF';
+      if (s >= 51) return '#FFFBEB';
+      if (s >= 31) return '#FFF7ED';
+      return '#FEF2F2';
+    };
+
+    const roleColor = (r) => ({
+      spine: '#0066CC',
+      leaf: '#059669',
+      controller: '#6B7280'
+    }[r] || '#6B7280');
+
+    const roleBg = (r) => ({
+      spine: '#EBF4FF',
+      leaf: '#ECFDF5',
+      controller: '#F9FAFB'
+    }[r] || '#F9FAFB');
+
+    const criterionLabels = {
+      programmability: 'Programmability',
+      naming_convention: 'Naming Convention',
+      source_of_truth: 'Source of Truth',
+      telemetry: 'Telemetry',
+      fault_hygiene: 'Fault Hygiene',
+      policy_consistency: 'Policy Consistency',
+      firmware_currency: 'Firmware Currency'
+    };
+
+    const criterionDisplayNames = {
+      programmability: 'Programmability',
+      naming_convention: 'Naming Convention',
+      source_of_truth: 'Source of Truth',
+      telemetry: 'Telemetry Configuration',
+      fault_hygiene: 'Fault Management Hygiene',
+      policy_consistency: 'Policy Consistency',
+      firmware_currency: 'Firmware Currency'
+    };
+
+    // ── Components ─────────────────────────────────────────
+
+    const Card = ({ children, style, className }) => (
+      <div className="card" style={{
+        background: '#FFFFFF',
+        border: '1px solid #E5E7EB',
+        borderRadius: '12px',
+        padding: '20px',
+        boxShadow: '0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)',
+        ...style
+      }}>
+        {children}
+      </div>
+    );
+
+    const Badge = ({ label, color, bg }) => (
+      <span style={{
+        fontSize: '0.65rem',
+        fontWeight: 700,
+        textTransform: 'uppercase',
+        letterSpacing: '0.1em',
+        color: color || '#0066CC',
+        background: bg || '#EBF4FF',
+        border: `1px solid ${color || '#0066CC'}30`,
+        padding: '2px 8px',
+        borderRadius: '999px',
+        whiteSpace: 'nowrap'
+      }}>{label}</span>
+    );
+
+    const SectionLabel = ({ children }) => (
+      <p style={{
+        fontSize: '0.65rem',
+        fontWeight: 700,
+        textTransform: 'uppercase',
+        letterSpacing: '0.15em',
+        color: '#0066CC',
+        marginBottom: '6px'
+      }}>{children}</p>
+    );
+
+    const ScoreRing = ({ score, size = 120 }) => {
+      const r = (size / 2) - 10;
+      const circ = 2 * Math.PI * r;
+      const fill = (score / 100) * circ;
+      const c = scoreColor(score);
+      const bg = scoreBg(score);
+      return (
+        <div style={{ position: 'relative', width: size, height: size }}>
+          <svg width={size} height={size} style={{ transform: 'rotate(-90deg)' }}>
+            <circle cx={size/2} cy={size/2} r={r} fill="none" stroke="#E5E7EB" strokeWidth="8"/>
+            <circle cx={size/2} cy={size/2} r={r} fill="none" stroke={c} strokeWidth="8"
+              strokeDasharray={`${fill} ${circ}`} strokeLinecap="round"
+              style={{ transition: 'stroke-dasharray 0.8s ease' }}/>
+          </svg>
+          <div style={{
+            position: 'absolute', inset: 0,
+            display: 'flex', flexDirection: 'column',
+            alignItems: 'center', justifyContent: 'center'
+          }}>
+            <span style={{ fontSize: size * 0.22, fontWeight: 800, color: c }}>{score}</span>
+            <span style={{ fontSize: size * 0.1, color: '#6B7280' }}>/ 100</span>
+          </div>
+        </div>
+      );
+    };
+
+    const ProgressBar = ({ value, height = 8 }) => (
+      <div style={{
+        background: '#E5E7EB',
+        borderRadius: '999px',
+        height,
+        overflow: 'hidden'
+      }}>
+        <div style={{
+          width: `${value}%`,
+          height: '100%',
+          background: scoreColor(value),
+          borderRadius: '999px',
+          transition: 'width 0.6s ease'
+        }}/>
+      </div>
+    );
+
+    const StatusDot = ({ active }) => (
+      <div style={{
+        width: 8, height: 8, borderRadius: '50%', flexShrink: 0,
+        background: active ? '#059669' : '#DC2626',
+        boxShadow: active ? '0 0 0 2px #ECFDF5' : '0 0 0 2px #FEF2F2'
+      }}/>
+    );
+
+    // ── Header ─────────────────────────────────────────────
+
+    const Header = ({ onExportCSV, onExportPDF }) => (
+      <header id="header" className="no-print" style={{
+        position: 'fixed', top: 0, left: 0, right: 0,
+        height: '60px',
+        background: '#0F1117',
+        borderBottom: '1px solid #1E2433',
+        display: 'flex', alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: '0 24px',
+        zIndex: 100
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+            <defs>
+              <linearGradient id="hg" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#00D4FF"/>
+                <stop offset="100%" stopColor="#00FF9D"/>
+              </linearGradient>
+            </defs>
+            <path d="M16 2 L30 28 L2 28 Z" stroke="url(#hg)" strokeWidth="2.5" strokeLinejoin="round"/>
+            <path d="M16 9 L25 25 L7 25 Z" fill="url(#hg)" opacity="0.8"/>
+          </svg>
+          <div>
+            <div style={{ fontWeight: 700, fontSize: '0.95rem', color: '#FFFFFF' }}>
+              Fabric Pulse
+              <span style={{ color: '#6B7280', fontWeight: 400, fontSize: '0.75rem', marginLeft: '8px' }}>
+                by DeltaEdge Solutions
+              </span>
+            </div>
+            <div style={{ fontSize: '0.68rem', color: '#6B7280' }}>
+              {data.meta.apicHost} · APIC {data.apic.version} · {new Date(data.meta.generatedAt).toLocaleString()}
+              {data.meta.consultantName && ` · Prepared by ${data.meta.consultantName}`}
+            </div>
+          </div>
+        </div>
+        <div style={{ display: 'flex', gap: '8px' }}>
+          <button onClick={onExportCSV} style={{
+            background: 'transparent',
+            border: '1px solid #1E2433',
+            color: '#9CA3AF',
+            padding: '7px 16px',
+            borderRadius: '8px',
+            cursor: 'pointer',
+            fontSize: '0.75rem',
+            fontFamily: 'Inter',
+            fontWeight: 500
+          }}>⬇ Export CSV</button>
+          <button onClick={onExportPDF} style={{
+            background: '#0066CC',
+            border: 'none',
+            color: '#FFFFFF',
+            padding: '7px 16px',
+            borderRadius: '8px',
+            cursor: 'pointer',
+            fontSize: '0.75rem',
+            fontWeight: 600,
+            fontFamily: 'Inter'
+          }}>⬇ Export PDF</button>
+        </div>
+      </header>
+    );
+
+    // ── Sidebar ────────────────────────────────────────────
+
+    const navItems = [
+      { id: 'summary', label: '📊 Executive Summary', group: null },
+      { id: 'nodes', label: 'Node Inventory', group: 'Fabric Health' },
+      { id: 'faults', label: 'Fault Analysis', group: 'Fabric Health' },
+      { id: 'tenants', label: 'Tenant Inventory', group: 'Fabric Health' },
+      { id: 'policies', label: 'Fabric Policies', group: 'Fabric Health' },
+      { id: 'access', label: 'Access Policies', group: 'Fabric Health' },
+      { id: 'readiness', label: 'Overall Score', group: 'Automation Readiness' },
+      { id: 'criteria', label: 'Criteria Breakdown', group: 'Automation Readiness' },
+      { id: 'remediation', label: 'Remediation Plan', group: 'Automation Readiness' },
+    ];
+
+    const Sidebar = ({ active, onSelect }) => {
+      const groups = ['Fabric Health', 'Automation Readiness'];
+      return (
+        <aside id="sidebar" className="no-print" style={{
+          position: 'fixed',
+          top: '60px', left: 0, bottom: 0,
+          width: '240px',
+          background: '#0F1117',
+          borderRight: '1px solid #1E2433',
+          overflowY: 'auto',
+          padding: '12px 0'
+        }}>
+          {navItems.filter(i => !i.group).map(item => (
+            <button key={item.id} onClick={() => onSelect(item.id)} style={{
+              display: 'block', width: '100%', textAlign: 'left',
+              padding: '9px 16px',
+              background: active === item.id ? '#1E2433' : 'transparent',
+              borderLeft: active === item.id ? '2px solid #0066CC' : '2px solid transparent',
+              border: 'none',
+              color: active === item.id ? '#FFFFFF' : '#9CA3AF',
+              fontSize: '0.8rem', fontWeight: active === item.id ? 600 : 400,
+              cursor: 'pointer', fontFamily: 'Inter',
+              marginBottom: '2px'
+            }}>
+              {item.label}
+            </button>
+          ))}
+
+          {groups.map(group => (
+            <div key={group} style={{ marginTop: '20px' }}>
+              <p style={{
+                fontSize: '0.58rem', fontWeight: 700,
+                textTransform: 'uppercase', letterSpacing: '0.15em',
+                color: '#374151', padding: '0 16px', marginBottom: '6px'
+              }}>{group}</p>
+              {navItems.filter(i => i.group === group).map(item => (
+                <button key={item.id} onClick={() => onSelect(item.id)} style={{
+                  display: 'block', width: '100%', textAlign: 'left',
+                  padding: '8px 16px',
+                  background: active === item.id ? '#1E2433' : 'transparent',
+                  borderLeft: active === item.id ? '2px solid #0066CC' : '2px solid transparent',
+                  border: 'none',
+                  color: active === item.id ? '#FFFFFF' : '#9CA3AF',
+                  fontSize: '0.78rem', fontWeight: active === item.id ? 600 : 400,
+                  cursor: 'pointer', fontFamily: 'Inter',
+                  marginBottom: '2px'
+                }}>
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          ))}
+
+          <div style={{
+            position: 'absolute', bottom: 0, left: 0, right: 0,
+            padding: '12px 16px',
+            borderTop: '1px solid #1E2433',
+            background: '#0F1117'
+          }}>
+            <p style={{ fontSize: '0.62rem', color: '#374151', marginBottom: '4px' }}>Fabric Pulse v1.1</p>
+            <a href={data.meta.website} target="_blank"
+              style={{ fontSize: '0.62rem', color: '#0066CC', textDecoration: 'none' }}>
+              {data.meta.website}
+            </a>
+          </div>
+        </aside>
+      );
+    };
+
+    // ── Print Header (shows only in PDF) ───────────────────
+
+    const PrintHeader = () => (
+      <div className="print-header" style={{ display: 'none' }}>
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <defs>
+            <linearGradient id="pg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#0066CC"/>
+              <stop offset="100%" stopColor="#059669"/>
+            </linearGradient>
+          </defs>
+          <path d="M16 2 L30 28 L2 28 Z" stroke="url(#pg)" strokeWidth="2.5" strokeLinejoin="round"/>
+          <path d="M16 9 L25 25 L7 25 Z" fill="url(#pg)" opacity="0.8"/>
+        </svg>
+        <div>
+          <div style={{ fontWeight: 700, fontSize: '1.1rem', color: '#1A1D2E' }}>
+            Fabric Pulse — ACI Health & Automation Readiness Report
+          </div>
+          <div style={{ fontSize: '0.75rem', color: '#6B7280' }}>
+            {data.meta.apicHost} · APIC {data.apic.version} · Generated {new Date(data.meta.generatedAt).toLocaleString()}
+            {data.meta.consultantName && ` · Prepared by ${data.meta.consultantName}`}
+            · {data.meta.website}
+          </div>
+        </div>
+      </div>
+    );
+
+    // ── Executive Summary ──────────────────────────────────
+
+    const Summary = () => {
+      const spines = data.nodes.filter(n => n.role === 'spine').length;
+      const leaves = data.nodes.filter(n => n.role === 'leaf').length;
+      const controllers = data.nodes.filter(n => n.role === 'controller').length;
+      const totalFaults = Object.values(data.severityCounts).reduce((a,b) => a+b, 0);
+      const rl = data.readiness.level;
+      return (
+        <div>
+          <SectionLabel>Executive Summary</SectionLabel>
+          <h1 style={{ fontSize: '1.7rem', fontWeight: 800, marginBottom: '24px', color: '#1A1D2E' }}>
+            Fabric Health Overview
+          </h1>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '12px', marginBottom: '16px' }}>
+            {[
+              { label: 'Health Score', value: data.health.current, sub: `↑ from ${data.health.previous}`, color: scoreColor(data.health.current), bg: scoreBg(data.health.current) },
+              { label: 'Total Faults', value: fmt(totalFaults), sub: `${data.severityCounts.critical} critical`, color: data.severityCounts.critical > 0 ? '#DC2626' : '#059669', bg: data.severityCounts.critical > 0 ? '#FEF2F2' : '#ECFDF5' },
+              { label: 'Fabric Nodes', value: data.nodes.length - controllers, sub: `${spines} spine · ${leaves} leaf`, color: '#0066CC', bg: '#EBF4FF' },
+              { label: 'Tenants', value: data.tenants.length, sub: 'Including system', color: '#7C3AED', bg: '#F5F3FF' },
+            ].map(s => (
+              <Card key={s.label} style={{ borderTop: `3px solid ${s.color}` }}>
+                <p style={{ fontSize: '0.7rem', color: '#6B7280', marginBottom: '8px', fontWeight: 500 }}>{s.label}</p>
+                <p style={{ fontSize: '2.2rem', fontWeight: 800, color: s.color, lineHeight: 1 }}>{s.value}</p>
+                <p style={{ fontSize: '0.7rem', color: '#6B7280', marginTop: '6px' }}>{s.sub}</p>
+              </Card>
+            ))}
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '16px' }}>
+            <Card>
+              <p style={{ fontSize: '0.85rem', fontWeight: 600, marginBottom: '16px', color: '#1A1D2E' }}>Fault Breakdown</p>
+              {Object.entries(data.severityCounts).map(([sev, count]) => (
+                <div key={sev} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <div style={{ width: 10, height: 10, borderRadius: '3px', background: severityColor(sev) }}/>
+                    <span style={{ fontSize: '0.82rem', color: '#374151', textTransform: 'capitalize', fontWeight: 500 }}>{sev}</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ fontSize: '0.82rem', fontWeight: 700, color: severityColor(sev) }}>{fmt(count)}</span>
+                    <div style={{
+                      width: '60px', height: '4px', background: '#E5E7EB', borderRadius: '999px', overflow: 'hidden'
+                    }}>
+                      <div style={{
+                        width: `${Math.min((count / Math.max(...Object.values(data.severityCounts))) * 100, 100)}%`,
+                        height: '100%', background: severityColor(sev), borderRadius: '999px'
+                      }}/>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </Card>
+            <Card>
+              <p style={{ fontSize: '0.85rem', fontWeight: 600, marginBottom: '16px', color: '#1A1D2E' }}>Automation Readiness</p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                <ScoreRing score={data.readiness.overallScore} size={90}/>
+                <div>
+                  <Badge label={rl.label} color={rl.color} bg={scoreBg(data.readiness.overallScore)}/>
+                  <p style={{ fontSize: '0.78rem', color: '#6B7280', marginTop: '8px', lineHeight: 1.5 }}>{rl.description}</p>
+                  <p style={{ fontSize: '0.75rem', color: '#6B7280', marginTop: '6px' }}>
+                    <strong style={{ color: '#059669' }}>{Object.values(data.readiness.criteria).filter(c => c.score >= 85).length}</strong> of 7 criteria met
+                  </p>
+                </div>
+              </div>
+            </Card>
+          </div>
+          <Card>
+            <p style={{ fontSize: '0.85rem', fontWeight: 600, marginBottom: '16px', color: '#1A1D2E' }}>Fabric Information</p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+              {[
+                { label: 'APIC Version', value: data.apic.version },
+                { label: 'APIC Host', value: data.meta.apicHost },
+                { label: 'Report Generated', value: new Date(data.meta.generatedAt).toLocaleString() },
+                { label: 'Spine Nodes', value: spines },
+                { label: 'Leaf Nodes', value: leaves },
+                { label: 'Controllers', value: controllers },
+              ].map(i => (
+                <div key={i.label}>
+                  <p style={{ fontSize: '0.65rem', color: '#9CA3AF', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{i.label}</p>
+                  <p style={{ fontSize: '0.9rem', fontWeight: 600, marginTop: '3px', color: '#1A1D2E' }}>{i.value}</p>
+                </div>
+              ))}
+            </div>
+          </Card>
+        </div>
+      );
+    };
+
+    // ── Node Inventory ─────────────────────────────────────
+
+    const NodeInventory = () => {
+      const [filter, setFilter] = useState('all');
+      const [expanded, setExpanded] = useState(null);
+      const roles = ['all', 'spine', 'leaf', 'controller'];
+
+      const toggleNode = (id) => {
+        setExpanded(prev => prev === id ? null : id);
+      };
+
+      const renderNodeDetail = (node) => {
+        const details = [
+          { label: 'Serial Number', value: node.serial },
+          { label: 'Firmware Version', value: node.version },
+          { label: 'Distinguished Name', value: node.dn },
+          { label: 'Fabric State', value: node.fabricSt },
+          { label: 'Last State Change', value: node.lastStateModTs ? new Date(node.lastStateModTs).toLocaleString() : 'N/A' },
+        ];
+        return (
+          <div style={{
+            marginTop: '14px', paddingTop: '14px',
+            borderTop: '1px solid #F3F4F6',
+            display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '14px'
+          }}>
+            {details.map(item => (
+              <div key={item.label}>
+                <p style={{ fontSize: '0.62rem', color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>
+                  {item.label}
+                </p>
+                <p style={{ fontSize: '0.82rem', fontWeight: 500, marginTop: '3px', color: '#374151', wordBreak: 'break-all' }}>
+                  {item.value}
+                </p>
+              </div>
+            ))}
+          </div>
+        );
+      };
+
+      const filtered = filter === 'all' ? data.nodes : data.nodes.filter(n => n.role === filter);
+
+      return (
+        <div>
+          <SectionLabel>Fabric Health</SectionLabel>
+          <h2 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '16px', color: '#1A1D2E' }}>Node Inventory</h2>
+          <div style={{ display: 'flex', gap: '8px', marginBottom: '16px', flexWrap: 'wrap' }}>
+            {roles.map(r => (
+              <button key={r} onClick={() => setFilter(r)} style={{
+                padding: '6px 16px', borderRadius: '999px',
+                border: `1px solid ${filter === r ? '#0066CC' : '#E5E7EB'}`,
+                background: filter === r ? '#EBF4FF' : '#FFFFFF',
+                color: filter === r ? '#0066CC' : '#6B7280',
+                fontSize: '0.78rem', cursor: 'pointer',
+                fontFamily: 'Inter', textTransform: 'capitalize', fontWeight: 500
+              }}>
+                {r === 'all' ? `All (${data.nodes.length})` : r}
+              </button>
+            ))}
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {filtered.map(node => (
+              <div key={node.id}
+                className="card"
+                style={{
+                  background: '#FFFFFF',
+                  border: '1px solid #E5E7EB',
+                  borderRadius: '12px',
+                  padding: '20px',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
+                  cursor: 'pointer',
+                  borderLeft: `4px solid ${roleColor(node.role)}`
+                }}
+                onClick={() => toggleNode(node.id)}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <StatusDot active={node.fabricSt === 'active' || node.fabricSt === 'commissioned'}/>
+                    <div>
+                      <p style={{ fontWeight: 600, fontSize: '0.9rem', color: '#1A1D2E' }}>{node.name}</p>
+                      <p style={{ fontSize: '0.72rem', color: '#6B7280' }}>Node {node.id} · {node.address}</p>
+                    </div>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <Badge label={node.role} color={roleColor(node.role)} bg={roleBg(node.role)}/>
+                    <Badge
+                      label={node.fabricSt}
+                      color={node.fabricSt === 'active' || node.fabricSt === 'commissioned' ? '#059669' : '#DC2626'}
+                      bg={node.fabricSt === 'active' || node.fabricSt === 'commissioned' ? '#ECFDF5' : '#FEF2F2'}/>
+                    <span style={{ color: '#9CA3AF', fontSize: '0.75rem' }}>{node.model || 'APIC'}</span>
+                    <span style={{ color: '#9CA3AF', fontSize: '0.75rem' }}>
+                      {expanded === node.id ? '▲' : '▼'}
+                    </span>
+                  </div>
+                </div>
+                {expanded === node.id && renderNodeDetail(node)}
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    };
+
+    // ── Fault Analysis ─────────────────────────────────────
+
+    const FaultAnalysis = () => {
+      const [filter, setFilter] = useState('all');
+      const [expanded, setExpanded] = useState(null);
+      const severities = ['all', 'critical', 'major', 'minor', 'warning'];
+      const total = Object.values(data.severityCounts).reduce((a,b) => a+b, 0);
+
+      const toggleFault = (i) => {
+        setExpanded(prev => prev === i ? null : i);
+      };
+
+      const renderFaultDetail = (fault) => {
+        const details = [
+          { label: 'Fault Code', value: fault.code },
+          { label: 'Cause', value: fault.cause },
+          { label: 'Type', value: fault.type },
+          { label: 'Domain', value: fault.domain },
+          { label: 'Rule', value: fault.rule },
+          { label: 'Unacknowledged', value: fault.nonAcked > 0 ? fault.nonAcked + ' of ' + fault.count + ' unacknowledged' : 'All acknowledged' },
+        ];
+        const urgencyBg = fault.urgency === 'High' ? '#FEF2F2' : fault.urgency === 'Medium' ? '#FFFBEB' : '#F0FDF4';
+        const urgencyBorder = fault.urgency === 'High' ? '#FECACA' : fault.urgency === 'Medium' ? '#FDE68A' : '#BBF7D0';
+        const urgencyColor = fault.urgency === 'High' ? '#DC2626' : fault.urgency === 'Medium' ? '#D97706' : '#059669';
+        const urgencyIcon = fault.urgency === 'High' ? '🔴' : fault.urgency === 'Medium' ? '🟡' : '🟢';
+        return (
+          <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: '1px solid #F3F4F6' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px', marginBottom: '12px' }}>
+              {details.map(item => (
+                <div key={item.label}>
+                  <p style={{ fontSize: '0.62rem', color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>
+                    {item.label}
+                  </p>
+                  <p style={{ fontSize: '0.82rem', fontWeight: 500, marginTop: '3px', color: '#374151' }}>
+                    {item.value}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <div style={{ background: severityBg(fault.severity), borderRadius: '8px', padding: '12px', marginBottom: '10px' }}>
+              <p style={{ fontSize: '0.62rem', color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '6px' }}>
+                Full Description
+              </p>
+              <p style={{ fontSize: '0.82rem', color: '#374151', lineHeight: 1.6 }}>{fault.descr}</p>
+            </div>
+            <div style={{ background: urgencyBg, border: '1px solid ' + urgencyBorder, borderRadius: '8px', padding: '14px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                <span style={{ fontSize: '1rem' }}>{urgencyIcon}</span>
+                <p style={{ fontSize: '0.7rem', color: '#374151', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  Operational Impact
+                </p>
+                <span style={{
+                  fontSize: '0.65rem', fontWeight: 700,
+                  color: urgencyColor,
+                  background: urgencyBg,
+                  border: '1px solid ' + urgencyBorder,
+                  padding: '2px 8px', borderRadius: '999px'
+                }}>
+                  {fault.urgency} Urgency
+                </span>
+              </div>
+              <p style={{ fontSize: '0.85rem', color: '#374151', lineHeight: 1.7 }}>
+                {fault.operationalImpact}
+              </p>
+            </div>
+          </div>
+        );
+      };
+
+      const filtered = filter === 'all' ? data.faults : data.faults.filter(f => f.severity === filter);
+
+      return (
+        <div>
+          <SectionLabel>Fabric Health</SectionLabel>
+          <h2 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '16px', color: '#1A1D2E' }}>
+            Fault Analysis
+          </h2>
+          <div style={{ display: 'flex', gap: '10px', marginBottom: '16px', flexWrap: 'wrap' }}>
+            {Object.entries(data.severityCounts).map(([sev, count]) => (
+              <div key={sev} style={{
+                display: 'flex', alignItems: 'center', gap: '8px',
+                background: severityBg(sev),
+                border: '1px solid ' + severityColor(sev) + '30',
+                borderRadius: '10px', padding: '10px 16px'
+              }}>
+                <div style={{ width: 8, height: 8, borderRadius: '3px', background: severityColor(sev) }}/>
+                <span style={{ fontSize: '0.8rem', textTransform: 'capitalize', color: '#374151', fontWeight: 500 }}>
+                  {sev}
+                </span>
+                <span style={{ fontSize: '0.85rem', fontWeight: 800, color: severityColor(sev) }}>
+                  {fmt(count)}
+                </span>
+              </div>
+            ))}
+            <div style={{
+              display: 'flex', alignItems: 'center', gap: '8px',
+              background: '#F9FAFB', border: '1px solid #E5E7EB',
+              borderRadius: '10px', padding: '10px 16px'
+            }}>
+              <span style={{ fontSize: '0.8rem', color: '#6B7280', fontWeight: 500 }}>Total instances</span>
+              <span style={{ fontSize: '0.85rem', fontWeight: 800, color: '#1A1D2E' }}>{fmt(total)}</span>
+            </div>
+          </div>
+          <div style={{ display: 'flex', gap: '8px', marginBottom: '16px', flexWrap: 'wrap' }}>
+            {severities.map(s => (
+              <button key={s} onClick={() => setFilter(s)} style={{
+                padding: '6px 16px', borderRadius: '999px',
+                border: '1px solid ' + (filter === s ? severityColor(s) : '#E5E7EB'),
+                background: filter === s ? severityBg(s) : '#FFFFFF',
+                color: filter === s ? severityColor(s) : '#6B7280',
+                fontSize: '0.78rem', cursor: 'pointer',
+                fontFamily: 'Inter', textTransform: 'capitalize', fontWeight: 500
+              }}>
+                {s === 'all' ? 'All (' + data.faults.length + ')' : s}
+              </button>
+            ))}
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {filtered.map((fault, i) => (
+              <div key={i}
+                style={{
+                  background: expanded === i ? '#FAFAFA' : '#FFFFFF',
+                  border: '1px solid #E5E7EB',
+                  borderRadius: '12px',
+                  padding: '20px',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
+                  cursor: 'pointer',
+                  borderLeft: '4px solid ' + severityColor(fault.severity)
+                }}
+                onClick={() => toggleFault(i)}>
+                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', flex: 1 }}>
+                    <div style={{
+                      width: 10, height: 10, borderRadius: '3px',
+                      background: severityColor(fault.severity),
+                      marginTop: '6px', flexShrink: 0
+                    }}/>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px', flexWrap: 'wrap' }}>
+                        <span style={{ fontWeight: 700, fontSize: '0.9rem', color: severityColor(fault.severity) }}>
+                          {fault.code}
+                        </span>
+                        <Badge label={fault.severity} color={severityColor(fault.severity)} bg={severityBg(fault.severity)}/>
+                        <Badge label={fault.domain} color="#6B7280" bg="#F9FAFB"/>
+                        <Badge label={fault.type} color="#6B7280" bg="#F9FAFB"/>
+                        {fault.nonAcked > 0 && (
+                          <Badge label={fault.nonAcked + ' unacked'} color="#DC2626" bg="#FEF2F2"/>
+                        )}
+                      </div>
+                      <p style={{ fontSize: '0.82rem', color: '#374151', lineHeight: 1.5 }}>
+                        {fault.descr}
+                      </p>
+                    </div>
+                  </div>
+                  <div style={{ textAlign: 'right', flexShrink: 0, marginLeft: '16px' }}>
+                    <p style={{ fontSize: '1.1rem', fontWeight: 800, color: '#1A1D2E' }}>{fmt(fault.count)}</p>
+                    <p style={{ fontSize: '0.65rem', color: '#9CA3AF' }}>instances</p>
+                    <p style={{ fontSize: '0.65rem', color: '#9CA3AF', marginTop: '6px' }}>
+                      {expanded === i ? '▲ less' : '▼ details'}
+                    </p>
+                  </div>
+                </div>
+                {expanded === i && renderFaultDetail(fault)}
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    };
+
+    // ── Tenant Inventory ───────────────────────────────────
+
+    const TenantInventory = () => (
+      <div>
+        <SectionLabel>Fabric Health</SectionLabel>
+        <h2 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '16px', color: '#1A1D2E' }}>Tenant Inventory</h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px' }}>
+          {data.tenants.map(t => (
+            <Card key={t.name} style={{ borderTop: '3px solid #7C3AED' }}>
+              <p style={{ fontWeight: 700, fontSize: '1rem', marginBottom: '6px', color: '#1A1D2E' }}>{t.name}</p>
+              {t.descr ? (
+                <p style={{ fontSize: '0.78rem', color: '#6B7280', marginBottom: '10px', lineHeight: 1.4 }}>{t.descr}</p>
+              ) : (
+                <div style={{
+                  display: 'flex', alignItems: 'center', gap: '6px',
+                  background: '#FEF2F2', borderRadius: '6px', padding: '6px 10px',
+                  marginBottom: '10px'
+                }}>
+                  <span style={{ fontSize: '0.75rem' }}>⚠️</span>
+                  <p style={{ fontSize: '0.75rem', color: '#DC2626', fontWeight: 500 }}>No description set</p>
+                </div>
+              )}
+              <div style={{ borderTop: '1px solid #F3F4F6', paddingTop: '10px' }}>
+                <p style={{ fontSize: '0.68rem', color: '#9CA3AF' }}>{t.dn}</p>
+                <p style={{ fontSize: '0.68rem', color: '#9CA3AF', marginTop: '3px' }}>
+                  Modified: {t.modTs ? new Date(t.modTs).toLocaleDateString() : 'N/A'}
+                </p>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </div>
+    );
+
+    // ── Fabric Policies ────────────────────────────────────
+
+    const FabricPolicies = () => {
+      const { snmp, syslog, bgpRR } = data.policies;
+      const policyChecks = [
+        {
+          label: 'BGP Route Reflector',
+          icon: '🔄',
+          configured: bgpRR.configured,
+          detail: bgpRR.configured ? `${bgpRR.nodes.length} RR node(s) configured` : 'Not configured — MP-BGP for EVPN will not function correctly',
+          critical: true
+        },
+        {
+          label: 'SNMP Policy',
+          icon: '📡',
+          configured: snmp.configured,
+          detail: snmp.adminSt === 'disabled' ? 'Policy exists but is currently disabled' : snmp.configured ? 'Enabled and active' : 'Not configured',
+          critical: false
+        },
+        {
+          label: 'Syslog Remote Destinations',
+          icon: '📋',
+          configured: syslog.configured,
+          detail: syslog.configured ? `${syslog.destinations.length} destination(s) configured` : 'No remote syslog destinations configured',
+          critical: false
+        },
+      ];
+
+      return (
+        <div>
+          <SectionLabel>Fabric Health</SectionLabel>
+          <h2 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '16px', color: '#1A1D2E' }}>Fabric Policies</h2>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '28px' }}>
+            {policyChecks.map(p => (
+              <Card key={p.label} style={{
+                display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                borderLeft: `4px solid ${p.configured ? '#059669' : p.critical ? '#DC2626' : '#D97706'}`
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                  <span style={{ fontSize: '1.4rem' }}>{p.icon}</span>
+                  <div>
+                    <p style={{ fontWeight: 600, fontSize: '0.88rem', color: '#1A1D2E' }}>{p.label}</p>
+                    <p style={{ fontSize: '0.76rem', color: '#6B7280', marginTop: '2px' }}>{p.detail}</p>
+                  </div>
+                </div>
+                <Badge
+                  label={p.configured ? '✓ Configured' : '✗ Not Configured'}
+                  color={p.configured ? '#059669' : p.critical ? '#DC2626' : '#D97706'}
+                  bg={p.configured ? '#ECFDF5' : p.critical ? '#FEF2F2' : '#FFFBEB'}/>
+              </Card>
+            ))}
+          </div>
+
+          <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '12px', color: '#1A1D2E' }}>EPG Policy Enforcement</h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {data.epgs.map(e => (
+              <Card key={e.dn} style={{
+                display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                borderLeft: `4px solid ${e.pcEnfPref === 'enforced' ? '#059669' : '#D97706'}`
+              }}>
+                <div>
+                  <p style={{ fontWeight: 600, fontSize: '0.88rem', color: '#1A1D2E' }}>{e.name}</p>
+                  <p style={{ fontSize: '0.7rem', color: '#9CA3AF', marginTop: '2px' }}>{e.dn}</p>
+                </div>
+                <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                  <Badge
+                    label={e.pcEnfPref}
+                    color={e.pcEnfPref === 'enforced' ? '#059669' : '#D97706'}
+                    bg={e.pcEnfPref === 'enforced' ? '#ECFDF5' : '#FFFBEB'}/>
+                  <Badge
+                    label={e.configSt}
+                    color={e.configSt === 'applied' ? '#059669' : '#DC2626'}
+                    bg={e.configSt === 'applied' ? '#ECFDF5' : '#FEF2F2'}/>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      );
+    };
+
+    // ── Access Policies ────────────────────────────────────
+
+    const AccessPolicies = () => {
+      const ap = data.accessPolicies;
+      const sections = [
+        { title: 'VLAN Pools', icon: '🏷️', items: ap.vlanPools, extra: (i) => i.allocMode ? `Alloc: ${i.allocMode}` : null },
+        { title: 'Physical Domains', icon: '🔌', items: ap.physDomains, extra: null },
+        { title: 'Attachable Entity Profiles (AEP)', icon: '🔗', items: ap.aeps, extra: null },
+        { title: 'Interface Policy Groups', icon: '⚙️', items: ap.interfacePolicyGroups, extra: null },
+      ];
+
+      return (
+        <div>
+          <SectionLabel>Fabric Health</SectionLabel>
+          <h2 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '16px', color: '#1A1D2E' }}>Access Policies</h2>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+            {sections.map(section => (
+              <Card key={section.title} style={{ borderTop: '3px solid #0066CC' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
+                  <span style={{ fontSize: '1.1rem' }}>{section.icon}</span>
+                  <p style={{ fontWeight: 600, fontSize: '0.9rem', color: '#1A1D2E' }}>{section.title}</p>
+                  <span style={{
+                    marginLeft: 'auto',
+                    background: '#EBF4FF', color: '#0066CC',
+                    fontSize: '0.7rem', fontWeight: 700,
+                    padding: '2px 8px', borderRadius: '999px'
+                  }}>{section.items.length}</span>
+                </div>
+                {section.items.length === 0 ? (
+                  <div style={{ background: '#F9FAFB', borderRadius: '8px', padding: '12px', textAlign: 'center' }}>
+                    <p style={{ fontSize: '0.78rem', color: '#9CA3AF' }}>None configured</p>
+                  </div>
+                ) : (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                    {section.items.map((item, i) => (
+                      <div key={i} style={{
+                        background: '#F9FAFB', borderRadius: '8px', padding: '10px 12px',
+                        border: '1px solid #F3F4F6'
+                      }}>
+                        <p style={{ fontWeight: 600, fontSize: '0.82rem', color: '#1A1D2E' }}>{item.name}</p>
+                        {item.descr && (
+                          <p style={{ fontSize: '0.72rem', color: '#6B7280', marginTop: '2px' }}>{item.descr}</p>
+                        )}
+                        {section.extra && section.extra(item) && (
+                          <p style={{ fontSize: '0.7rem', color: '#0066CC', marginTop: '2px', fontWeight: 500 }}>{section.extra(item)}</p>
+                        )}
+                        <p style={{ fontSize: '0.65rem', color: '#D1D5DB', marginTop: '4px', wordBreak: 'break-all' }}>{item.dn}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </Card>
+            ))}
+          </div>
+        </div>
+      );
+    };
+
+    // ── Readiness Score ────────────────────────────────────
+
+    const ReadinessScore = () => {
+      const { overallScore, level, criteria } = data.readiness;
+      return (
+        <div>
+          <SectionLabel>Automation Readiness</SectionLabel>
+          <h2 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '24px', color: '#1A1D2E' }}>Overall Score</h2>
+          <Card style={{ textAlign: 'center', padding: '32px', marginBottom: '20px', borderTop: `4px solid ${level.color}` }}>
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
+              <ScoreRing score={overallScore} size={160}/>
+            </div>
+            <Badge label={level.label} color={level.color} bg={scoreBg(overallScore)}/>
+            <p style={{ fontSize: '0.85rem', color: '#6B7280', marginTop: '10px', maxWidth: '400px', margin: '10px auto 0' }}>
+              {level.description}
+            </p>
+          </Card>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            {Object.entries(criteria).map(([key, val]) => (
+              <Card key={key}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                  <p style={{ fontWeight: 600, fontSize: '0.88rem', color: '#1A1D2E' }}>{criterionLabels[key]}</p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ fontSize: '0.88rem', fontWeight: 800, color: scoreColor(val.score) }}>
+                      {val.score}/100
+                    </span>
+                    <Badge
+                      label={val.score >= 85 ? '✓ Met' : val.score >= 50 ? '⚠ Partial' : '✗ Gap'}
+                      color={val.score >= 85 ? '#059669' : val.score >= 50 ? '#D97706' : '#DC2626'}
+                      bg={val.score >= 85 ? '#ECFDF5' : val.score >= 50 ? '#FFFBEB' : '#FEF2F2'}/>
+                  </div>
+                </div>
+                <ProgressBar value={val.score}/>
+              </Card>
+            ))}
+          </div>
+        </div>
+      );
+    };
+
+    // ── Criteria Breakdown ─────────────────────────────────
+
+    const CriteriaBreakdown = () => {
+      const [expanded, setExpanded] = useState(null);
+      const { criteria } = data.readiness;
+
+      const toggleExpand = (key) => {
+        setExpanded(prev => prev === key ? null : key);
+      };
+
+      const renderFinding = (f, i) => {
+        const isIssue = f.indexOf('⚠') === 0;
+        const isImpact = f.trim().indexOf('Impact:') === 0;
+        const bg = isIssue ? '#FEF2F2' : isImpact ? '#FFF7ED' : '#F9FAFB';
+        const border = isIssue ? '3px solid #DC2626' : isImpact ? '3px solid #EA580C' : '3px solid #E5E7EB';
+        const iconColor = isIssue ? '#DC2626' : isImpact ? '#EA580C' : '#059669';
+        const icon = isIssue ? '✗' : isImpact ? '⚡' : '✓';
+        const text = isImpact ? f.replace('Impact:', 'Why this matters:') : f;
+        const weight = isIssue ? 600 : 400;
+        return (
+          <div key={i} style={{
+            display: 'flex', gap: '8px', marginBottom: '6px',
+            background: bg, borderRadius: '6px', padding: '8px 10px',
+            borderLeft: border
+          }}>
+            <span style={{ flexShrink: 0, fontSize: '0.8rem', color: iconColor }}>{icon}</span>
+            <p style={{ fontSize: '0.82rem', color: '#374151', lineHeight: 1.5, fontWeight: weight }}>{text}</p>
+          </div>
+        );
+      };
+
+      return (
+        <div>
+          <SectionLabel>Automation Readiness</SectionLabel>
+          <h2 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '16px', color: '#1A1D2E' }}>
+            Criteria Breakdown
+          </h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            {Object.entries(criteria).map(([key, val]) => (
+              <div key={key}
+                className="card"
+                style={{
+                  background: '#FFFFFF',
+                  border: '1px solid #E5E7EB',
+                  borderRadius: '12px',
+                  padding: '20px',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
+                  cursor: 'pointer',
+                  borderLeft: `4px solid ${scoreColor(val.score)}`,
+                  background: expanded === key ? '#FAFAFA' : '#FFFFFF'
+                }}
+                onClick={() => toggleExpand(key)}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <span style={{ fontSize: '1rem' }}>
+                      {val.score >= 85 ? '✅' : val.score >= 50 ? '⚠️' : '❌'}
+                    </span>
+                    <p style={{ fontWeight: 700, fontSize: '0.9rem', color: '#1A1D2E' }}>
+                      {criterionLabels[key]}
+                    </p>
+                    <Badge
+                      label={`${val.score}/100`}
+                      color={scoreColor(val.score)}
+                      bg={scoreBg(val.score)}/>
+                  </div>
+                  <span style={{ color: '#9CA3AF', fontSize: '0.75rem' }}>
+                    {expanded === key ? '▲ less' : '▼ details'}
+                  </span>
+                </div>
+                <ProgressBar value={val.score}/>
+                {expanded === key && (
+                  <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: '1px solid #F3F4F6' }}>
+                    {val.findings && val.findings.length > 0 && (
+                      <div style={{ marginBottom: '14px' }}>
+                        <p style={{
+                          fontSize: '0.65rem', fontWeight: 700, color: '#9CA3AF',
+                          textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '8px'
+                        }}>
+                          Findings
+                        </p>
+                        {val.findings.map((f, i) => renderFinding(f, i))}
+                      </div>
+                    )}
+                    {val.recommendations && val.recommendations.length > 0 && (
+                      <div style={{ marginBottom: '14px' }}>
+                        <p style={{
+                          fontSize: '0.65rem', fontWeight: 700, color: '#9CA3AF',
+                          textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '8px'
+                        }}>
+                          Recommended Actions
+                        </p>
+                        {val.recommendations.map((r, i) => (
+                          <div key={i} style={{
+                            display: 'flex', gap: '8px', marginBottom: '6px',
+                            background: '#FFFBEB', borderRadius: '6px', padding: '8px 10px'
+                          }}>
+                            <span style={{ color: '#D97706', fontSize: '0.8rem', flexShrink: 0 }}>
+                              ⚡
+                            </span>
+                            <p style={{ fontSize: '0.82rem', color: '#374151', lineHeight: 1.5 }}>{r}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                    <div style={{
+                      display: 'flex', justifyContent: 'space-between',
+                      alignItems: 'center', paddingTop: '8px',
+                      borderTop: '1px solid #F3F4F6'
+                    }}>
+                      <span style={{ fontSize: '0.75rem', color: '#6B7280' }}>
+                        Remediation effort: <strong style={{ color: '#1A1D2E' }}>{val.effort}</strong>
+                      </span>
+                      <a href={data.meta.contactUrl} target="_blank" style={{
+                        fontSize: '0.75rem', color: '#0066CC',
+                        textDecoration: 'none', fontWeight: 600
+                      }}>
+                        Talk to DeltaEdge →
+                      </a>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    };
+
+    // ── Remediation Plan ───────────────────────────────────
+
+    const RemediationPlan = () => {
+      const { remediationPlan, overallScore } = data.readiness;
+      if (overallScore >= 85) {
+        return (
+          <div>
+            <SectionLabel>Automation Readiness</SectionLabel>
+            <h2 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '24px', color: '#1A1D2E' }}>Remediation Plan</h2>
+            <Card style={{ textAlign: 'center', padding: '48px', borderTop: '3px solid #059669' }}>
+              <p style={{ fontSize: '2.5rem', marginBottom: '12px' }}>🎉</p>
+              <p style={{ fontWeight: 700, fontSize: '1.2rem', marginBottom: '8px', color: '#059669' }}>
+                This fabric is Automation Ready
+              </p>
+              <p style={{ color: '#6B7280', fontSize: '0.88rem', maxWidth: '400px', margin: '0 auto' }}>
+                No critical gaps identified. This fabric meets the DeltaEdge automation readiness standard.
+              </p>
+            </Card>
+          </div>
+        );
+      }
+      return (
+        <div>
+          <SectionLabel>Automation Readiness</SectionLabel>
+          <h2 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '8px', color: '#1A1D2E' }}>Your Remediation Plan</h2>
+          <p style={{ color: '#6B7280', fontSize: '0.85rem', marginBottom: '24px', lineHeight: 1.6 }}>
+            Based on this assessment, DeltaEdge has identified <strong>{remediationPlan.length} gap(s)</strong> that
+            need to be addressed before this fabric is ready for automation and AI-driven operations.
+            Listed in recommended remediation order.
+          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '32px' }}>
+            {remediationPlan.map((gap, i) => (
+              <Card key={gap.criterion} style={{ borderLeft: `4px solid ${scoreColor(gap.score)}` }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '14px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <span style={{
+                      width: '28px', height: '28px', borderRadius: '50%',
+                      background: scoreBg(gap.score),
+                      border: `2px solid ${scoreColor(gap.score)}`,
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      fontSize: '0.72rem', fontWeight: 800, color: scoreColor(gap.score),
+                      flexShrink: 0
+                    }}>{i+1}</span>
+                    <div>
+                      <p style={{ fontWeight: 700, fontSize: '0.92rem', color: '#1A1D2E' }}>
+                        {criterionDisplayNames[gap.criterion]}
+                      </p>
+                      <p style={{ fontSize: '0.72rem', color: '#6B7280', marginTop: '2px' }}>
+                        Score: <span style={{ color: scoreColor(gap.score), fontWeight: 700 }}>{gap.score}/100</span>
+                        <span style={{ margin: '0 6px' }}>·</span>
+                        Effort: <strong>{gap.effort}</strong>
+                      </p>
+                    </div>
+                  </div>
+                  <Badge label={gap.service} color="#0066CC" bg="#EBF4FF"/>
+                </div>
+                {gap.recommendations.map((rec, j) => (
+                  <div key={j} style={{
+                    display: 'flex', gap: '8px', marginBottom: '6px',
+                    background: '#FFFBEB', borderRadius: '6px', padding: '8px 10px'
+                  }}>
+                    <span style={{ color: '#D97706', fontSize: '0.8rem', flexShrink: 0 }}>⚡</span>
+                    <p style={{ fontSize: '0.82rem', color: '#374151', lineHeight: 1.5 }}>{rec}</p>
+                  </div>
+                ))}
+              </Card>
+            ))}
+          </div>
+
+          <Card style={{
+            background: 'linear-gradient(135deg, #EBF4FF 0%, #ECFDF5 100%)',
+            border: '1px solid #0066CC20',
+            textAlign: 'center',
+            padding: '36px'
+          }}>
+            <svg width="44" height="44" viewBox="0 0 32 32" fill="none" style={{ margin: '0 auto 16px' }}>
+              <defs>
+                <linearGradient id="cg" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#0066CC"/>
+                  <stop offset="100%" stopColor="#059669"/>
+                </linearGradient>
+              </defs>
+              <path d="M16 2 L30 28 L2 28 Z" stroke="url(#cg)" strokeWidth="2.5" strokeLinejoin="round"/>
+              <path d="M16 9 L25 25 L7 25 Z" fill="url(#cg)" opacity="0.8"/>
+            </svg>
+            <h3 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '8px', color: '#1A1D2E' }}>
+              Ready to close these gaps?
+            </h3>
+            <p style={{ color: '#6B7280', fontSize: '0.85rem', maxWidth: '480px', margin: '0 auto 24px', lineHeight: 1.6 }}>
+              DeltaEdge Solutions offers structured remediation engagements covering all identified gaps —
+              with clear deliverables, timelines, and full accountability. Principal-led. Specialist-backed.
+            </p>
+            <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <a href={data.meta.clarityUrl} target="_blank" style={{
+                background: '#0066CC', color: '#FFFFFF',
+                padding: '10px 24px', borderRadius: '8px',
+                textDecoration: 'none', fontWeight: 700, fontSize: '0.85rem'
+              }}>
+                Book a Free Assessment Call
+              </a>
+              <a href={data.meta.contactUrl} target="_blank" style={{
+                background: '#FFFFFF', color: '#0066CC',
+                padding: '10px 24px', borderRadius: '8px',
+                textDecoration: 'none', fontWeight: 600, fontSize: '0.85rem',
+                border: '1px solid #0066CC'
+              }}>
+                Contact DeltaEdge
+              </a>
+            </div>
+            <p style={{ color: '#9CA3AF', fontSize: '0.7rem', marginTop: '16px' }}>
+              🌐 {data.meta.website} · 📧 {data.meta.contact}
+            </p>
+          </Card>
+        </div>
+      );
+    };
+
+    // ── Export Functions ───────────────────────────────────
+
+    const exportCSV = () => {
+      const rows = [];
+
+      rows.push(['=== FABRIC INFORMATION ===']);
+      rows.push(['APIC Host', data.meta.apicHost]);
+      rows.push(['APIC Version', data.apic.version]);
+      rows.push(['Report Generated', new Date(data.meta.generatedAt).toLocaleString()]);
+      rows.push(['Prepared By', data.meta.consultantName || 'DeltaEdge Solutions']);
+      rows.push(['Overall Health Score', data.health.current]);
+      rows.push(['Automation Readiness Score', data.readiness.overallScore]);
+      rows.push(['Readiness Level', data.readiness.level.label]);
+      rows.push([]);
+
+      rows.push(['=== NODE INVENTORY ===']);
+      rows.push(['ID', 'Name', 'Role', 'Model', 'Address', 'Fabric State', 'Version', 'Serial']);
+      data.nodes.forEach(n => rows.push([n.id, n.name, n.role, n.model, n.address, n.fabricSt, n.version, n.serial]));
+      rows.push([]);
+
+      rows.push(['=== FAULT SUMMARY ===']);
+      rows.push(['Code', 'Severity', 'Count', 'Non-Acknowledged', 'Cause', 'Domain', 'Type', 'Description']);
+      data.faults.forEach(f => rows.push([f.code, f.severity, f.count, f.nonAcked, f.cause, f.domain, f.type, `"${f.descr}"`]));
+      rows.push([]);
+
+      rows.push(['=== TENANT INVENTORY ===']);
+      rows.push(['Name', 'DN', 'Description', 'Last Modified']);
+      data.tenants.forEach(t => rows.push([t.name, t.dn, t.descr || 'No description', t.modTs]));
+      rows.push([]);
+
+      rows.push(['=== ACCESS POLICIES ===']);
+      rows.push(['Type', 'Name', 'DN', 'Description']);
+      data.accessPolicies.vlanPools.forEach(i => rows.push(['VLAN Pool', i.name, i.dn, i.descr]));
+      data.accessPolicies.physDomains.forEach(i => rows.push(['Physical Domain', i.name, i.dn, i.descr]));
+      data.accessPolicies.aeps.forEach(i => rows.push(['AEP', i.name, i.dn, i.descr]));
+      data.accessPolicies.interfacePolicyGroups.forEach(i => rows.push(['Interface Policy Group', i.name, i.dn, i.descr]));
+      rows.push([]);
+
+      rows.push(['=== AUTOMATION READINESS ===']);
+      rows.push(['Criterion', 'Score', 'Status', 'Effort']);
+      Object.entries(data.readiness.criteria).forEach(([k, v]) => {
+        rows.push([
+          criterionDisplayNames[k],
+          v.score,
+          v.score >= 85 ? 'Met' : v.score >= 50 ? 'Partial' : 'Gap',
+          v.effort
+        ]);
+      });
+      rows.push([]);
+
+      rows.push(['=== REMEDIATION PLAN ===']);
+      rows.push(['Priority', 'Criterion', 'Score', 'Effort', 'Recommended Service', 'Actions']);
+      data.readiness.remediationPlan.forEach((g, i) => {
+        rows.push([
+          i + 1,
+          criterionDisplayNames[g.criterion],
+          g.score,
+          g.effort,
+          g.service,
+          `"${g.recommendations.join(' | ')}"`
+        ]);
+      });
+
+      const csv = rows.map(r => r.join(',')).join('\n');
+      const blob = new Blob([csv], {type: 'text/csv'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `FabricPulse_${data.meta.apicHost}_${new Date().toISOString().split('T')[0]}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+    };
+
+    const exportPDF = () => {
+      const printDiv = document.getElementById('print-all-sections');
+      if (printDiv) {
+        printDiv.style.display = 'block';
+        window.print();
+        printDiv.style.display = 'none';
+      }
+    };
+
+    // ── All Sections for Print ─────────────────────────────
+
+    const AllSectionsForPrint = () => (
+      <div id="print-all-sections" style={{ display: 'none' }}>
+        <PrintHeader/>
+        <div className="print-section"><Summary/></div>
+        <div className="print-section"><NodeInventory/></div>
+        <div className="print-section"><FaultAnalysis/></div>
+        <div className="print-section"><TenantInventory/></div>
+        <div className="print-section"><FabricPolicies/></div>
+        <div className="print-section"><AccessPolicies/></div>
+        <div className="print-section"><ReadinessScore/></div>
+        <div className="print-section"><CriteriaBreakdown/></div>
+        <div className="print-section"><RemediationPlan/></div>
+      </div>
+    );
+
+    // ── Main App ───────────────────────────────────────────
+
+    const App = () => {
+      const [active, setActive] = useState('summary');
+      const panels = {
+        summary: <Summary/>,
+        nodes: <NodeInventory/>,
+        faults: <FaultAnalysis/>,
+        tenants: <TenantInventory/>,
+        policies: <FabricPolicies/>,
+        access: <AccessPolicies/>,
+        readiness: <ReadinessScore/>,
+        criteria: <CriteriaBreakdown/>,
+        remediation: <RemediationPlan/>
+      };
+      return (
+        <>
+          <Header onExportCSV={exportCSV} onExportPDF={exportPDF}/>
+          <Sidebar active={active} onSelect={setActive}/>
+          <main id="main-content" style={{
+            marginLeft: '240px',
+            marginTop: '60px',
+            padding: '32px',
+            minHeight: 'calc(100vh - 60px)',
+            background: '#F4F6FA'
+          }}>
+            {panels[active]}
+          </main>
+          <AllSectionsForPrint/>
+        </>
+      );
+    };
+
+    ReactDOM.render(<App/>, document.getElementById('root'));
+  </script>
+</body>
+</html>
