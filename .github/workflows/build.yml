@@ -1,0 +1,57 @@
+name: Build Fabric Pulse Executables
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install pyinstaller requests
+
+      - name: Build Windows executable
+        run: |
+          pyinstaller --onefile --name "FabricPulse-Windows" fabric_pulse.py
+
+      - name: Upload Windows executable
+        uses: actions/upload-artifact@v4
+        with:
+          name: FabricPulse-Windows
+          path: dist/FabricPulse-Windows.exe
+
+  build-mac:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install pyinstaller requests
+
+      - name: Build Mac executable
+        run: |
+          pyinstaller --onefile --name "FabricPulse-Mac" fabric_pulse.py
+
+      - name: Upload Mac executable
+        uses: actions/upload-artifact@v4
+        with:
+          name: FabricPulse-Mac
+          path: dist/FabricPulse-Mac
